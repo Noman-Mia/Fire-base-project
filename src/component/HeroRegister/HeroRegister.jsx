@@ -1,9 +1,25 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from "../../Firebase/firebase.config";
+import { useState } from "react";
+
 const HeroRegister = () => {
+    const [heroRegister, setHeroRegister] = useState('')
+
   const handleRegister = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    setHeroRegister("")
+    //create user
+   createUserWithEmailAndPassword(auth,email,password)
+   .then(result => {
+    console.log(result.user)
+   })
+   .catch(error => {
+    console.error(error)
+    setHeroRegister(error.message)
+   })
   };
   return (
     <div>
@@ -52,6 +68,9 @@ const HeroRegister = () => {
                 <button className="btn btn-primary">Register Now!</button>
               </div>
             </form>
+            {
+                heroRegister && <p className="text-3xl text-red-500">{heroRegister}</p>
+            }
           </div>
         </div>
       </div>
