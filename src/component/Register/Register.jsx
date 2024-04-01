@@ -2,7 +2,9 @@
 const Register = () => {
  const handleRegister = e =>{
     e.preventDefault ();
-    console.log("from submited");
+    const email = e.target.email.value
+    const password = e.target.password.value
+   
  }
 
   return (
@@ -13,7 +15,7 @@ const Register = () => {
           <input
             className="w-3/4 mb-5 py-2 px-4"
             type="email"
-            name="Email"
+            name="email"
             placeholder="Email Address"
             id=""
           />
@@ -21,7 +23,7 @@ const Register = () => {
           <input
             className="w-3/4 mb-5 py-2 px-4"
             type="password"
-            name="Password"
+            name="password"
             placeholder="Password"
             id=""
           />
