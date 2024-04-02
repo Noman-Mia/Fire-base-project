@@ -22,7 +22,11 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
-        setSucces("user log in seccesfully");
+        if(result.user.emailVerified){
+            setSucces("user log in seccesfully");
+        }else{
+            alert('please varify email')
+        }
       })
       .catch((error) => {
         console.error(error);
